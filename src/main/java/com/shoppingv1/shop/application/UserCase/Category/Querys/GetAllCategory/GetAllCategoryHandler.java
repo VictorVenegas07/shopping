@@ -11,12 +11,12 @@ import org.springframework.stereotype.Service;
 
 import com.shoppingv1.shop.application.Mappers.interfaces.CategoryMapper;
 import com.shoppingv1.shop.application.UserCase.Query;
-import com.shoppingv1.shop.application.UserCase.Category.Dtos.CategortyDto;
+import com.shoppingv1.shop.application.UserCase.Category.Dtos.CategoryDto;
 import com.shoppingv1.shop.core.Ports.services.CategoryService;
 import com.shoppingv1.shop.core.domain.Category;
 
 @Service
-public class GetAllCategoryHandler implements Query<Void, List<CategortyDto>> {
+public class GetAllCategoryHandler implements Query<Void, List<CategoryDto>> {
 
     private final CategoryService categoryRepository;
     private final CategoryMapper categoryMapper;
@@ -28,10 +28,10 @@ public class GetAllCategoryHandler implements Query<Void, List<CategortyDto>> {
     }
 
     @Override
-    public ResponseEntity<List<CategortyDto>> handle(Void request) {
+    public ResponseEntity<List<CategoryDto>> handle(Void request) {
        
         List<Category> categories = categoryRepository.findAll();
-        List<CategortyDto> categoryDtos = categories.stream().map(categoryMapper::toCategoryDto).collect(Collectors.toList());
+        List<CategoryDto> categoryDtos = categories.stream().map(categoryMapper::toCategoryDto).collect(Collectors.toList());
 
         return  ResponseEntity.ok(categoryDtos);
     }

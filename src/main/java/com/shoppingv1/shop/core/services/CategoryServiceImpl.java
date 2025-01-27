@@ -14,8 +14,15 @@ import jakarta.transaction.Transactional;
 @Transactional
 public class CategoryServiceImpl extends AbstractBaseRepositoryImpl<Category,Long> implements CategoryService{
 
+    private CategoryDomainRepository categoryDomainRepository;
     public CategoryServiceImpl(CategoryDomainRepository categoryDomainRepository) {
         super(categoryDomainRepository);
+        this.categoryDomainRepository = categoryDomainRepository;
+    }
+
+    @Override
+    public boolean existsById(Long entityId) {
+        return categoryDomainRepository.existsById(entityId);
     }
 
 }

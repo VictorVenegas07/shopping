@@ -15,6 +15,7 @@ public interface AbstractBaseService<T extends BaseEntity, ID extends Serializab
     public abstract T updateById(T entity, ID entityId);   
     public abstract void delete(T entity);
     public abstract void deleteById(ID entityId);
+    public abstract boolean existsById(ID entityId);
     // other methods u might need to be generic
     
 }

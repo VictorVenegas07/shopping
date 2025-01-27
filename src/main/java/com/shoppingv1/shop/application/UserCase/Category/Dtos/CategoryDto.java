@@ -7,7 +7,8 @@ import lombok.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CategortyDto {
+public class CategoryDto {
     private Long id;
     private String name;
+    private String description;
 }
